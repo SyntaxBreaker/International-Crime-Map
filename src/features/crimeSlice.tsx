@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface Crimes {
-    id?: string;
-    title?: string;
-    description?: string;
-    location?: string;
+    id: string;
+    title: string;
+    description: string;
+    location: string;
 }
 
 const initialState: Crimes[] = [];

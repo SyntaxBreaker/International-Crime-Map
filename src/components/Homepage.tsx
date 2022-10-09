@@ -12,11 +12,10 @@ import "leaflet/dist/leaflet.css";
 import { Map } from "./Map";
 
 export interface Crimes {
-    id?: string;
-    title?: string;
-    description?: string;
-    location?: string;
-    refId?: string;
+    id: string;
+    title: string;
+    description: string;
+    location: string;
 }
 
 export function Homepage() {

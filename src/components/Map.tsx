@@ -10,11 +10,10 @@ const myIcon = new Icon({
 });
 
 export interface Crimes {
-    id?: string;
-    title?: string;
-    description?: string;
-    location?: string;
-    refId?: string;
+    id: string;
+    title: string;
+    description: string;
+    location: string;
 }
 
 interface MapProps {

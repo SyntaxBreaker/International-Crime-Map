@@ -6,10 +6,9 @@ import { doc, getDoc } from "firebase/firestore/lite";
 import { db } from "../firebase";
 
 interface Data {
-    id?: number;
-    title?: string;
-    description?: string;
-    location?: string;
+    title: string;
+    description: string;
+    location: string;
 }
 
 export function EditCrime() {
@@ -26,7 +25,7 @@ export function EditCrime() {
             try {
                 const response = await getDoc(doc(db, "crimes", `${id}`));
                 if (response.exists()) {
-                    setData(response.data());
+                    setData(response.data() as Data);
                 }
             } catch (err) {
                 console.log(err);

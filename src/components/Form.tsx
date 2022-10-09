@@ -5,10 +5,9 @@ import { doc, setDoc, addDoc, collection } from "firebase/firestore/lite";
 import { db } from "../firebase";
 
 interface FormData {
-    title?: string;
-    description?: string;
-    location?: string;
-    refId?: string;
+    title: string;
+    description: string;
+    location: string;
 }
 
 export function Form({ data }: { data?: FormData }) {
