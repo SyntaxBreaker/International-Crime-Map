@@ -68,6 +68,7 @@ export function Form({ data }: { data?: FormData }) {
                     sx={{ width: "80%" }}
                     onChange={handleChange}
                     value={formData.title}
+                    inputProps={{maxLength: 32}}
                 />
             </Grid>
             <Grid item xs={12} lg={5} style={{ margin: "0 auto" }}>
@@ -80,6 +81,7 @@ export function Form({ data }: { data?: FormData }) {
                     sx={{ width: "80%" }}
                     onChange={handleChange}
                     value={formData.description}
+                    inputProps={{maxLength: 128}}
                 />
             </Grid>
             <Grid item xs={12} lg={5} style={{ margin: "0 auto" }}>

@@ -26,10 +26,10 @@ export function Map({ handleRemove, crime }: MapProps) {
     return (
         <Marker position={[crime.latitude, crime.longitude] as any as [number, number]} icon={myIcon}>
             <Popup minWidth={250}>
-                <Typography variant="h4" align="center">
+                <Typography variant="h4" align="center" sx={{overflowWrap: 'break-word'}}>
                     {crime.title}
                 </Typography>
-                <Typography variant="body1">{crime.description}</Typography>
+                <Typography variant="body1" sx={{overflowWrap: 'break-word'}}>{crime.description}</Typography>
                 <Grid container justifyContent="space-around">
                     <Button
                         component={Link}
