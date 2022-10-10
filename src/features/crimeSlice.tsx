@@ -4,7 +4,8 @@ export interface Crimes {
     id: string;
     title: string;
     description: string;
-    location: string;
+    latitude: string;
+    longitude: string;
 }
 
 const initialState: Crimes[] = [];

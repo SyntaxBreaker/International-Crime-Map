@@ -13,7 +13,8 @@ export interface Crimes {
     id: string;
     title: string;
     description: string;
-    location: string;
+    latitude: string;
+    longitude: string;
 }
 
 interface MapProps {
@@ -23,7 +24,7 @@ interface MapProps {
 
 export function Map({ handleRemove, crime }: MapProps) {
     return (
-        <Marker position={crime["location"]!.split(",") as any} icon={myIcon}>
+        <Marker position={[crime.latitude, crime.longitude] as any as [number, number]} icon={myIcon}>
             <Popup minWidth={250}>
                 <Typography variant="h4" align="center">
                     {crime.title}

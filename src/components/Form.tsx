@@ -7,14 +7,16 @@ import { db } from "../firebase";
 interface FormData {
     title: string;
     description: string;
-    location: string;
+    latitude: string;
+    longitude: string;
 }
 
 export function Form({ data }: { data?: FormData }) {
     const [formData, setFormData] = useState<FormData>({
         title: "",
         description: "",
-        location: "",
+        latitude: "",
+        longitude: "",
     });
 
     const { crimeId } = useParams();
@@ -82,14 +84,26 @@ export function Form({ data }: { data?: FormData }) {
             </Grid>
             <Grid item xs={12} lg={5} style={{ margin: "0 auto" }}>
                 <TextField
-                    id="location"
-                    name="location"
-                    label="Crime location"
+                    id="latitude"
+                    name="latitude"
+                    label="Crime latitude"
                     variant="outlined"
                     margin="dense"
                     sx={{ width: "80%" }}
                     onChange={handleChange}
-                    value={formData.location}
+                    value={formData.latitude}
+                />
+            </Grid>
+            <Grid item xs={12} lg={5} style={{ margin: "0 auto" }}>
+                <TextField
+                    id="long"
+                    name="longitude"
+                    label="Crime longitude"
+                    variant="outlined"
+                    margin="dense"
+                    sx={{ width: "80%" }}
+                    onChange={handleChange}
+                    value={formData.longitude}
                 />
             </Grid>
             <Grid container justifyContent="center" sx={{ mt: "1rem" }}>

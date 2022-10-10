@@ -15,7 +15,8 @@ export interface Crimes {
     id: string;
     title: string;
     description: string;
-    location: string;
+    latitude: string;
+    longitude: string;
 }
 
 export function Homepage() {
@@ -35,8 +36,8 @@ export function Homepage() {
                 const crimes: Crimes[] = [];
                 data.docs.forEach((crime) => {
                     const { id } = crime;
-                    const { title, location, description } = crime.data();
-                    crimes.push({ id, title, description, location });
+                    const { title, description, latitude, longitude } = crime.data();
+                    crimes.push({ id, title, description, latitude, longitude });
                 });
 
                 dispatch(setCrimes(crimes));

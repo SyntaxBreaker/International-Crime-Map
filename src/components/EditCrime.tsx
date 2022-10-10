@@ -8,14 +8,16 @@ import { db } from "../firebase";
 interface Data {
     title: string;
     description: string;
-    location: string;
+    latitude: string;
+    longitude: string;
 }
 
 export function EditCrime() {
     const [data, setData] = useState<Data>({
         title: "",
         description: "",
-        location: "",
+        latitude: "",
+        longitude: "",
     });
     const params = useParams();
     const id = params.crimeId;
