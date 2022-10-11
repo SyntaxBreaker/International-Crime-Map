@@ -10,6 +10,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Map } from "./Map";
+import { ChangeView } from "./ChangeView";
 
 export interface Crimes {
     id: string;
@@ -25,10 +26,17 @@ export function Homepage() {
     const [crimeIdToRemove, setCrimeIdToRemove] = useState<
         string | null | undefined
     >();
-    const defaultPosition: LatLngExpression = [48.864716, 2.349];
+    const [defaultPosition, setDefaultPosition] = useState<LatLngExpression | null>(null);
 
     useEffect(() => {
         document.title = "Homepage";
+
+        if(navigator?.geolocation) {
+            navigator.geolocation.getCurrentPosition(location => {
+                const {latitude, longitude} = location.coords;
+                setDefaultPosition([latitude, longitude]);
+            }) 
+        }
 
         async function getCrimes() {
             try {
@@ -58,10 +66,9 @@ export function Homepage() {
         <>
             <Grid container>
                 <MapContainer
-                    center={defaultPosition}
-                    zoom={2}
                     style={{ height: "94vh", width: "100%" }}
                 >
+                    <ChangeView center={defaultPosition} zoom={12} />
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
