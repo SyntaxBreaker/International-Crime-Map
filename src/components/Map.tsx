@@ -3,22 +3,15 @@ import { Icon } from "leaflet";
 import { Marker, Popup } from "react-leaflet";
 import { Grid, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import {Crime} from '../features/crimeSlice';
 
 const myIcon = new Icon({
     iconUrl: mark,
     iconSize: [32, 32],
 });
 
-export interface Crimes {
-    id: string;
-    title: string;
-    description: string;
-    latitude: string;
-    longitude: string;
-}
-
 interface MapProps {
-    crime: Crimes;
+    crime: Crime;
     handleRemove: (id: string | undefined) => void;
 }
 
