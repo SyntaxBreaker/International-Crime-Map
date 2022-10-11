@@ -11,17 +11,10 @@ import { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Map } from "./Map";
 import { ChangeView } from "./ChangeView";
-
-export interface Crimes {
-    id: string;
-    title: string;
-    description: string;
-    latitude: string;
-    longitude: string;
-}
+import { Crime } from "../features/crimeSlice";
 
 export function Homepage() {
-    const crimes = useAppSelector((state) => state.crimes);
+    const crimes = useAppSelector((state) => state.crimes.crimeList);
     const dispatch = useAppDispatch();
     const [crimeIdToRemove, setCrimeIdToRemove] = useState<
         string | null | undefined
@@ -41,7 +34,7 @@ export function Homepage() {
         async function getCrimes() {
             try {
                 const data = await getDocs(collection(db, "crimes"));
-                const crimes: Crimes[] = [];
+                const crimes: Crime[] = [];
                 data.docs.forEach((crime) => {
                     const { id } = crime;
                     const { title, description, latitude, longitude } = crime.data();
@@ -55,7 +48,7 @@ export function Homepage() {
         }
 
         getCrimes();
-    }, [dispatch, crimes]);
+    }, [dispatch]);
 
     const handleRemove = (id: string | undefined): void => {
         dispatch(setIsOpen());

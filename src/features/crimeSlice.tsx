@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface Crimes {
+export interface Crime {
     id: string;
     title: string;
     description: string;
@@ -8,21 +8,27 @@ export interface Crimes {
     longitude: string;
 }
 
-const initialState: Crimes[] = [];
+export interface Crimes {
+    crimeList: Crime[]
+}
+
+const initialState: Crimes = {
+    crimeList: []
+};
 
 export const crimeSlice = createSlice({
     name: "crimes",
     initialState,
     reducers: {
         setCrimes: (state, action) => {
-            state.length = 0;
-            action.payload.forEach((crime: Crimes) => {
-                state.push(crime);
+            state.crimeList = [];
+            action.payload.forEach((crime: Crime) => {
+                state.crimeList = [...state.crimeList, crime]
             });
         },
         remove: (state, action) => {
             const id = action.payload;
-            state = state.filter((crime) => crime.id !== id);
+            state.crimeList.splice(state.crimeList.findIndex(crime => crime.id === id), 1);
         },
     },
 });
