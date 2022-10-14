@@ -29,6 +29,10 @@ export function Form({ data }: { data?: FormData }) {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
+        if(/^\s/gm.test(value)) return;
+        if(name === 'latitude' || name === 'longitude') {
+            if(/[^-0-9.]/g.test(value) || value.charAt(0) === '.') return;
+        }
         setFormData({ ...formData, [name]: value });
     };
 
@@ -69,6 +73,9 @@ export function Form({ data }: { data?: FormData }) {
                     onChange={handleChange}
                     value={formData.title}
                     inputProps={{maxLength: 32}}
+                    required
+                    error={formData.title === ''}
+                    helperText={formData.title === '' ? "title: can't be blank" : ''}
                 />
             </Grid>
             <Grid item xs={12} lg={5} style={{ margin: "0 auto" }}>
@@ -82,6 +89,9 @@ export function Form({ data }: { data?: FormData }) {
                     onChange={handleChange}
                     value={formData.description}
                     inputProps={{maxLength: 128}}
+                    required
+                    error={formData.description === ''}
+                    helperText={formData.description === '' ? "description: can't be blank" : ''}
                 />
             </Grid>
             <Grid item xs={12} lg={5} style={{ margin: "0 auto" }}>
@@ -94,6 +104,9 @@ export function Form({ data }: { data?: FormData }) {
                     sx={{ width: "80%" }}
                     onChange={handleChange}
                     value={formData.latitude}
+                    required
+                    error={formData.latitude === ''}
+                    helperText={formData.latitude === '' ? "latitude: can't be blank" : ''}
                 />
             </Grid>
             <Grid item xs={12} lg={5} style={{ margin: "0 auto" }}>
@@ -106,6 +119,9 @@ export function Form({ data }: { data?: FormData }) {
                     sx={{ width: "80%" }}
                     onChange={handleChange}
                     value={formData.longitude}
+                    required
+                    error={formData.longitude === ''}
+                    helperText={formData.longitude === '' ? "longitude: can't be blank" : ''}
                 />
             </Grid>
             <Grid container justifyContent="center" sx={{ mt: "1rem" }}>
