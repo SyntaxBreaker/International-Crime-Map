@@ -24,7 +24,7 @@ What you need to install the software and how to install them:
 
 Step-by-step instructions on how to install the project:
 
-1. Clone the repository: `git clone https://github.com/xMetaneRx/International-Crime-Map.git`
+1. Clone the repository: `git clone https://github.com/SyntaxBreaker/International-Crime-Map.git`
 2. Navigate to the project directory: `cd International-Crime-Map`
 3. Install the dependencies: `npm install`
 
